@@ -1,9 +1,8 @@
 /* 
-    View LICENSE.txt for license information
+    View LICENSE for license information (MIT License)
     Copyright (c) 2019 ToolpostBot
 
     Please don't judge my coding habits too much :(
-    Someone teach me async, though is it even needed in this case?
 */
 
 const { exec } = require('child_process');
