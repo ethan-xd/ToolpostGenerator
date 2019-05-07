@@ -1,7 +1,5 @@
 # ToolpostGenerator
-## An open source recreation of the software that powered ToolpostBot.
-
-This is a rewrite of the software that powered ToolpostBot since February 2018 up until some time in early 2019. It used to run off a Batch script. I won't put anyone through that, so here's a Node.js rewrite based off the ToolpostBot Discord bot source.
+This is an open source recreation of the software that powered ToolpostBot since February 2018, up until some time in early 2019. It used to run off a mess of Batch scripts, PHP, webservers, and Node.js. I won't put anyone through that, so here's a completely Node.js rewrite based off the ToolpostBot Discord bot source.
 
 **Designed for Windows.**
 
