@@ -14,12 +14,12 @@ async function main() {
         await ffmpeg();
     } catch (err) {
         console.error('Please install FFMPEG and FFPROBE into the working directory or into your %PATH%.\nFFMPEG can be downloaded at: https://ffmpeg.org/download.html');
-        process.exit(-2);
+        return false;
     }
 
     if (!fs.existsSync('source.mp4')) {
         console.error('Please place a source video named "source.mp4" into this directory to be used as the video in your generation.');
-        process.exit(-1);
+        return false;
     }
 
     let videoLength;
@@ -27,7 +27,7 @@ async function main() {
         videoLength = await getVideoLength();
     } catch(err) {
         console.error(`There was a problem with your video source:\n\n${err.message}`);
-        process.exit(-4);
+        return false;
     }
 
     if (!fs.existsSync('sourcemp3/')) fs.mkdirSync('sourcemp3');
@@ -35,7 +35,7 @@ async function main() {
     let sources = fs.readdirSync('sourcemp3/');
     if (sources.length == 0) {
         console.error('Please add at least one MP3 into "sourcemp3".');
-        process.exit(-3);
+        return false;
     }
 
     if (!fs.existsSync('temp\\')) fs.mkdirSync('temp');
@@ -51,7 +51,7 @@ async function main() {
             currentSourceLength = await getSourceLength(source); 
         } catch(err) {
             console.error(`There was a problem with the source "sourcemp3\\${source}":\n\n${err.message}`);
-            process.exit(-5);
+            return false;
         }
 
         // Remove too short sources from consideration
@@ -61,7 +61,7 @@ async function main() {
         // If out of sources, throw error
         if (sources.length == 0) {
             console.error(`Please add at least one MP3 that is longer than the length of source.mp4 (${videoLength}) into "sourcemp3\\".`);
-            process.exit(-6);
+            return false;
         }
     }
 
@@ -73,7 +73,7 @@ async function main() {
         filename = await generateVideo(source, sourceStartSecond, videoLength);
     } catch(err) {
         console.error(`Something went wrong during generation:\n\n${err.message}`);
-        process.exit(-7);
+        return false;
     }
 
     console.log(`Source MP3: ${source}`);
@@ -82,7 +82,7 @@ async function main() {
 
     fs.renameSync(`temp\\${filename}`, filename);
 
-    process.exit(0);
+    return true;
 }
 
 function getSourceLength(file) {
