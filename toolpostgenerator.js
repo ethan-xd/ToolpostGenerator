@@ -34,7 +34,7 @@ async function main() {
 
     let sources = fs.readdirSync('sourcemp3/');
     if (sources.length == 0) {
-        console.error('Please add at least one MP3 into "sourcemp3".');
+        console.error('Please add at least one MP3 into "sourcemp3\\".');
         return false;
     }
 
