@@ -17,7 +17,7 @@ This is an open source recreation of the software that powered ToolpostBot since
 Please feel free to make contributions! Refactors, bug fixes, grammar correcting, anything! Please do not judge my code too much!
 
 ### MIT License
-**Copyright © 2019 ToolpostBot**
+Copyright (c) 2019 ToolpostBot
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
